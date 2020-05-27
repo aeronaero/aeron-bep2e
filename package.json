@@ -1,0 +1,32 @@
+{
+  "name": "contracts",
+  "version": "1.0.0",
+  "description": "Staking contracts",
+  "repository": {
+    "type": "git"
+  },
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "dev": "truffle deploy --network development",
+    "tbsc": "truffle deploy --network tbsc",
+    "test": "truffle test --network test",
+    "coverage": "solidity-coverage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "@openzeppelin/contracts": "^3.0.1"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-bignumber": "^3.0.0",
+    "ethlint": "^1.2.5",
+    "ganache-cli": "^6.9.1",
+    "solidity-coverage": "^0.6",
+    "truffle": "^5.1.27"
+  }
+}
