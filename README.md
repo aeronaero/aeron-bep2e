@@ -12,14 +12,15 @@ within a certain block interval receive a reward in tokens.
 - `truffle compile`
 - `npm run test` to test
 - `npm run dev` to run on development network
-- or deploy contract with Remix (https://remix.ethereum.org/)
+- or deploy contract with [Remix](https://remix.ethereum.org/)
 - `truffle-flattener contracts/AeronToken.sol | pbcopy` copy to verify contract code
 
 
 ## Binance Smart Chain
 
 You can use Metamask to access Binance Smart Chain:
-(https://github.com/binance-chain/docs-site/blob/add-bsc/docs/smart-chain/wallet/metamask.md)
+
+https://github.com/binance-chain/docs-site/blob/add-bsc/docs/smart-chain/wallet/metamask.md
 
 
 ## BEP2 > BEP2E Migration
