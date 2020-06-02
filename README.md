@@ -29,7 +29,7 @@ Public methods:
 
 - `git clone ...`
 - `cd aeron-bep2e`
-- `nmp install`
+- `npm install`
 - edit networks `vim truffle-config.js`
 - `truffle compile`
 - `npm run test` to test
