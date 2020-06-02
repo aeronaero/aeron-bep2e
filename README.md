@@ -24,6 +24,8 @@ Public methods:
 `blocksPerReward` - number of blocks required to pass for the reward to accrue  
 `rewardPercent` - reward in percent of the staked amount multiplied by 1000  
 
+https://explorer.binance.org/smart-testnet/address/0x3b13067E1d4c0664988731Ce096019B6b5052D27/read_contract
+
 
 ## Installation
 
