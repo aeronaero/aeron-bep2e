@@ -4,8 +4,9 @@ This “New ARN” contract for Binance Smart Chain implements a simple staking 
 
 It will be further developed to enable graded rewards, based on the amounts staked or other variables.
 
-In present implementation, stake is attached to a block number when it has been created, and reward is calculated as `staked amount` * `rewardPercent` * number of blocks `blocksPerReward` lapsed.
-
+In present implementation, a stake is attached to a block number when it has been created, and reward is calculated as `staked amount` * `rewardPercent` * number of blocks `blocksPerReward` lapsed.
+<br>   
+<br>  
 The contract owner can call `setRewardPercent`, `setBlocksPerReward`:  
 `setRewardPercent (amount)` - define the reward magnitude (for example 500 = 0.5%; 1000 = 1% by default)  
 `setBlocksPerReward (amount)` - define the number of blocks for the reward to accrue (17280 blocks = 24h by default)  
