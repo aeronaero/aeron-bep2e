@@ -6,17 +6,19 @@ It will be further developed to enable graded rewards, based on the amounts stak
 
 In present implementation, a stake is attached to a block number when it has been created, and reward is calculated as `staked amount` * `rewardPercent` * number of blocks `blocksPerReward` lapsed.
 <br>   
-<br>  
 The contract owner can call `setRewardPercent`, `setBlocksPerReward`:  
+  
 `setRewardPercent (amount)` - define the reward magnitude (for example 500 = 0.5%; 1000 = 1% by default)  
 `setBlocksPerReward (amount)` - define the number of blocks for the reward to accrue (17280 blocks = 24h by default)  
 
 The token holders can call `createStake`, `removeStake`, `withdrawReward`:  
+  
 `createStake (amount)` - amount is burned, stake and block number are recorded. In case accrued reward exists, `withdrawReward` is called automatically  
 `removeStake (amount)` - reduces the stake and resets the block number. In case accrued reward exists, `withdrawReward` is called automatically. Calls `_mint(amount)` to send the amount to the token holder  
 `withdrawReward ()` - sends the whole accrued reward to the token holder, stake remains unchanged, resets the block number for the stake  
 
 Public methods:  
+  
 `stakeOf (address)` - returns the current stake for the address  
 `rewardOf (address)` - returns the accrued reward for the address  
 `totalRewards` - total amount of all rewards currently held for all stakeholders  
