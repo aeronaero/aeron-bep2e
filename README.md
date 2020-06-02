@@ -1,7 +1,29 @@
 ## About
 
-This contract implements a simple staking version where the stakeholders periodically 
-within a certain block interval receive a reward in tokens.
+This “New ARN” contract for Binance Smart Chain implements a simple staking version where the stakeholders periodically within a certain block interval receive a reward in tokens.
+
+It will we further developed to enable graded rewards, based on the amount staked or other variables.
+
+In present implementation, stake is attached to a block number when it was created, and reward is calculated as `staked amount` * `rewardPercent` * number of blocks `blocksPerReward` lapsed.
+
+The contract owner can call `setRewardPercent`, `setBlocksPerReward`:
+`setRewardPercent (amount)` - define the reward magnitude (for example 500 = 0.5%; 1000 = 1% by default)
+`setBlocksPerReward (amount)` - define the number of blocks for the reward to accrue (17280 blocks = 24h by default)
+
+The token holders can call `createStake`, `removeStake`, `withdrawReward`:
+`createStake (amount)` - amount is burned, stake and block number are recorded. In case accrued reward exists, `withdrawReward` is called automatically
+`removeStake (amount)` - reduces the stake and resets the block number. In case accrued reward exists, `withdrawReward` is called automatically. Calls _mint(amount) to send the amount to the token holder
+`withdrawReward ()` - sends the whole accrued reward to the token holder, stake remains unchanged, resets the block number for the stake
+
+Public methods:
+`stakeOf (address)` - returns the current stake for the address
+`rewardOf (address)` - returns the accrued reward for the address
+`totalRewards` - total amount of all rewards currently held for all stakeholders
+`totalStakes` - total amount of all stakes
+`blocksTillReward (address)` - returns the number of blocks remaining till the next reward accrues for the address
+`blocksPerReward` - number of blocks required to pass for the reward to accrue
+`rewardPercent` - reward in percent of the staked amount multiplied by 1000
+
 
 ## Installation
 
