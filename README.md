@@ -5,7 +5,8 @@ This “New ARN” contract for Binance Smart Chain implements a simple staking 
 It will be further developed to enable graded rewards, based on the amounts staked or other variables.
 
 In present implementation, a stake is attached to a block number when it has been created, and reward is calculated as `staked amount` * `rewardPercent` * number of blocks `blocksPerReward` lapsed.
-<br>   
+    
+    
 The contract owner can call `setRewardPercent`, `setBlocksPerReward`:  
   
 `setRewardPercent (amount)` - define the reward magnitude (for example 500 = 0.5%; 1000 = 1% by default)  
@@ -27,7 +28,7 @@ Public methods:
 `blocksPerReward` - number of blocks required to pass for the reward to accrue  
 `rewardPercent` - reward in percent of the staked amount multiplied by 1000  
 
-Sample contract on Binance Smart Chain is deployed here:  
+Sample contract on Binance Smart Chain Testnet is deployed here:  
   
 https://explorer.binance.org/smart-testnet/address/0x3b13067E1d4c0664988731Ce096019B6b5052D27/read_contract
 
@@ -42,7 +43,8 @@ https://explorer.binance.org/smart-testnet/address/0x3b13067E1d4c0664988731Ce096
 - `npm run test` to test
 - `npm run dev` to run on development network
 - or deploy contract with [Remix](https://remix.ethereum.org/)
-- `truffle-flattener contracts/AeronToken.sol | pbcopy` copy to verify contract code
+- `truffle-flattener contracts/AeronToken.sol | pbcopy` copy to verify Aeron token contract code
+- `truffle-flattener contracts/AeronStaking.sol | pbcopy` copy to verify Aeron staking contract code
 
 
 ## Binance Smart Chain
