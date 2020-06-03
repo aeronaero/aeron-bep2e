@@ -1,7 +1,7 @@
 {
-  "name": "contracts",
+  "name": "aeron-bep2e",
   "version": "1.0.0",
-  "description": "Staking contracts",
+  "description": "Aeron staking contracts",
   "repository": {
     "type": "git"
   },
@@ -22,11 +22,8 @@
     "@openzeppelin/contracts": "^3.0.1"
   },
   "devDependencies": {
-    "chai": "^4.2.0",
-    "chai-bignumber": "^3.0.0",
-    "ethlint": "^1.2.5",
     "ganache-cli": "^6.9.1",
-    "solidity-coverage": "^0.6",
-    "truffle": "^5.1.27"
+    "solidity-coverage": "^0.7.*",
+    "truffle": "^5.1.28"
   }
 }
