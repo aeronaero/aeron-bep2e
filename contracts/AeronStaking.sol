@@ -86,10 +86,19 @@ contract AeronStaking is Ownable {
     /**
      * @dev A method to retrieve the stake for a stakeholder.
      * @param _stakeholder The stakeholder to retrieve the stake for.
-     * @return uint256 The amount of wei staked.
+     * @return uint256 The amount staked.
      */
     function stakeOf(address _stakeholder) public view returns(uint256) {
         return stakes[_stakeholder];
+    }
+
+    /**
+     * @dev A method to retrieve the start block for a stakeholder.
+     * @param _stakeholder The stakeholder to retrieve the stake for.
+     * @return uint256 The block number of stakeholder.
+     */
+    function blockOf(address _stakeholder) public view returns(uint256) {
+        return blocks[_stakeholder];
     }
 
     /**

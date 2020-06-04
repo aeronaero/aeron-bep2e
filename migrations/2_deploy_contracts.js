@@ -1,10 +1,12 @@
-const AeronToken = artifacts.require('AeronToken');
-const AeronStaking = artifacts.require('AeronStaking');
+const AeronToken = artifacts.require("AeronToken");
+const AeronStaking = artifacts.require("AeronStaking");
 
-module.exports = function(deployer, network, accounts) {
-    deployer.deploy(AeronToken).then(token => {
-      return deployer.deploy(AeronStaking, AeronToken.address).then(() => {
-        return token.setStakingContract(AeronStaking.address);
-        });
-    });
+module.exports = async function(deployer) {
+  await deployer.deploy(AeronToken);
+  const token = await AeronToken.deployed();
+
+  await deployer.deploy(AeronStaking, token.address);
+  const staking = await AeronStaking.deployed();
+
+  await token.setStakingContract(staking.address);
 };
