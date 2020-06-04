@@ -6,8 +6,12 @@ import "./Upgradable.sol";
 contract UpgradableTest is Upgradable {
     using SafeMath for uint256;
 
-    constructor(AeronToken token, AeronStaking legacy_contract) public {
-        importStakeholders(token, legacy_contract);
+    constructor(AeronStaking legacy_contract) public {
+        importStakeholders(legacy_contract);
+    }
+
+    function test_stakeholders() public view returns (address) {
+        return stakeholders[0];
     }
 
 }

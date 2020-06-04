@@ -43,8 +43,8 @@ https://explorer.binance.org/smart-testnet/address/0x3b13067E1d4c0664988731Ce096
 - `npm run test` to test
 - `npm run dev` to run on development network
 - or deploy contracts with [Remix](https://remix.ethereum.org/)
-- `truffle-flattener contracts/AeronToken.sol | pbcopy` copy Aeron token contract code
-- `truffle-flattener contracts/AeronStaking.sol | pbcopy` copy Aeron staking contract code
+- `truffle-flattener contracts/AeronToken.sol | pbcopy` to copy Aeron token contract code
+- `truffle-flattener contracts/AeronStaking.sol | pbcopy` to copy Aeron staking contract code
 
 
 ## Binance Smart Chain
@@ -58,9 +58,9 @@ https://github.com/binance-chain/docs-site/blob/add-bsc/docs/smart-chain/wallet/
 
 1. Ensure both the BEP2 token and the BEP2E token both exist on each blockchain, with
 the same total supply. BEP2E should have 3 more methods than typical ERC20:
-  - a. symbol(): get token symbol
-  - b. decimals(): get the number of the token decimal digits
-  - c. owner(): get Binder contract owner’s address. This value should be initialized in
+  - a. `symbol()`: get token symbol
+  - b. `decimals()`: get the number of the token decimal digits
+  - c. `owner()`: get Binder contract owner’s address. This value should be initialized in
   the BEP2E contract constructor so that the further binding action can verify
   whether the binding gets the consent of the BEP2E owner.
 
