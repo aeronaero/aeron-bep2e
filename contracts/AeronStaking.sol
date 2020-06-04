@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.6.7;
 
 import "./AeronToken.sol";
@@ -50,7 +51,7 @@ contract AeronStaking is Ownable {
         setToken(token);
     }
 
-    function setToken(AeronToken token) public onlyOwner {
+    function setToken(AeronToken token) internal virtual {
         _token = token;
     }
 
@@ -223,7 +224,6 @@ contract AeronStaking is Ownable {
     function removeRewardTier(uint256 rewardAmount_) public onlyOwner {
         require(rewardAmount_ > 0, 'rewardAmount_ is not valid');
         require(tierAmounts[rewardAmount_] > 0, 'rewardPercent_ is not valid');
-        
         (bool _isRewardAmount, uint256 s) = isRewardTier(rewardAmount_);
         if(_isRewardAmount) {
             tierAmounts[s] = tierAmounts[tierAmounts.length - 1];

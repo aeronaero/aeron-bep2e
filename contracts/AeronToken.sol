@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.6.7;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
@@ -9,7 +10,7 @@ contract AeronToken is ERC20, Ownable {
 
     constructor() ERC20("Aeron", "ARN") public {
         _setupDecimals(8);
-        _mint(msg.sender, 2000000000000000);
+        _mint(msg.sender, 5000000000000000);
     }
 
     function setStakingContract(address staking_contract) public onlyOwner {

@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.6.7;
 
 import "./AeronStaking.sol";
@@ -17,22 +18,18 @@ contract Upgradable {
     mapping (address => uint256) internal stakes;
     mapping (address => uint256) internal blocks;
 
-    AeronToken internal _token;
-
-    constructor(AeronToken token) public {
-
-        // Store AeronToken contract address.
-        _token = token;
-
-        // Get current staking contract address.
-        AeronStaking legacy_contract = _token.stakingContract();
-
+    function importStakeholders(AeronToken token, AeronStaking legacy_contract) internal virtual returns (uint256, uint256, uint256) {
         // Import stakeholders state from legacy contract.
         stakeholders = legacy_contract.exportStakeholders();
         for (uint256 s = 0; s < stakeholders.length; s += 1) {
             stakes[stakeholders[s]] = legacy_contract.stakeOf(stakeholders[s]);
             blocks[stakeholders[s]] = legacy_contract.blockOf(stakeholders[s]);
         }
-
+        return (stakeholders.length, stakes.length, blocks.length);
     }
+
+    function test() public returns (address, uint256) {
+        return stakes[0];
+    }
+
 }
