@@ -30,7 +30,7 @@ Public methods:
 
 Sample contract on Binance Smart Chain Testnet is deployed here:  
   
-https://explorer.binance.org/smart-testnet/address/0x3b13067E1d4c0664988731Ce096019B6b5052D27/read_contract
+https://explorer.binance.org/smart-testnet/address/0xcf4311040e1380B6d828C8F7dC51A4f32Db0e938/read_contract
 
 
 ## Installation
