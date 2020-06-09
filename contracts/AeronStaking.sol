@@ -23,12 +23,16 @@ contract AeronStaking is Ownable {
      * @dev The reward tier system.
      * staking amount => reward percent multiplied by 1000
      */
-    //mapping (uint256 => uint16)[] internal rewards;
     uint256[] private tierAmounts;
     uint16[] private tierPercent;
 
     /**
-     * @notice Default reward percent multiplied by 1000.
+     * @dev Minimum staking amount.
+     */
+    uint256 private _minStake;
+
+    /**
+     * @dev Default reward percent multiplied by 1000.
      */
     uint16 private _rewardPercent;
 
@@ -47,7 +51,8 @@ contract AeronStaking is Ownable {
         setRewardPercent(1000);
         setRewardTier(100000000, 1000);
         setRewardTier(100000000000, 1000);
-        set_blocksPerReward(17280);
+        setBlocksPerReward(3); //17280
+        setMinStake(10000000000);
         setToken(token);
     }
 
@@ -64,6 +69,7 @@ contract AeronStaking is Ownable {
      * @param _stake The size of the stake to be created.
      */
     function createStake(uint256 _stake) public {
+        require(_stake >= _minStake, 'Stake is too low');
         _token.burn(msg.sender, _stake);
         if(stakes[msg.sender] == 0) addStakeholder(msg.sender);
         withdrawReward();
@@ -155,6 +161,16 @@ contract AeronStaking is Ownable {
     function rewardOf(address _stakeholder) public view returns(uint256) {
         if(blocks[_stakeholder] == 0 || stakes[_stakeholder] == 0) return 0;
         uint256 numberOfRewards = block.number.sub(blocks[_stakeholder]).div(_blocksPerReward);
+        uint256 reward = nextRewardOf(_stakeholder);
+        return reward.mul(numberOfRewards);
+    }
+
+    /**
+     * @dev A method to allow a stakeholder to check his rewards.
+     * @param _stakeholder The stakeholder to check rewards for.
+     */
+    function nextRewardOf(address _stakeholder) public view returns(uint256) {
+        if(blocks[_stakeholder] == 0 || stakes[_stakeholder] == 0) return 0;
         uint256 rewardPercent = _rewardPercent;
         uint256 prev_high = 0;
         for (uint256 s = 0; s < tierAmounts.length; s += 1) {
@@ -163,20 +179,20 @@ contract AeronStaking is Ownable {
                 prev_high = tierPercent[s];
             }
         }
-        return stakes[_stakeholder].mul(numberOfRewards).mul(rewardPercent).div(100000);
+        return stakes[_stakeholder].mul(rewardPercent).div(100000);
     }
 
     /**
      * @dev A method to the aggregated rewards from all stakeholders.
      * @return uint256 The aggregated rewards from all stakeholders.
      */
-    function totalRewards() public view returns(uint256) {
-        uint256 _totalRewards = 0;
-        for (uint256 s = 0; s < stakeholders.length; s += 1) {
-            _totalRewards = _totalRewards.add(rewardOf(stakeholders[s]));
-        }
-        return _totalRewards;
-    }
+    //function totalRewards() public view returns(uint256) {
+        //uint256 _totalRewards = 0;
+       // for (uint256 s = 0; s < stakeholders.length; s += 1) {
+      //      _totalRewards = _totalRewards.add(rewardOf(stakeholders[s]));
+    //    }
+  //      return _totalRewards;
+//    }
 
     /**
      * @dev A method to allow a stakeholder to withdraw his rewards.
@@ -194,6 +210,18 @@ contract AeronStaking is Ownable {
      */
     function setRewardPercent(uint16 rewardPercent_) public onlyOwner {
         _rewardPercent = rewardPercent_;
+    }
+
+    function countRewardTiers() public view returns(uint256) {
+        return tierAmounts.length;
+    }
+
+    function exportTierAmounts() public view returns(uint256[] memory) {
+        return  tierAmounts;
+    }
+
+    function exportTierPercent() public view returns(uint16[] memory) {
+        return tierPercent;
     }
 
     /**
@@ -243,7 +271,7 @@ contract AeronStaking is Ownable {
     /**
      * @dev A method to allow owner to set lock time for staking.
      */
-    function set_blocksPerReward(uint256 blocksPerReward_) public onlyOwner {
+    function setBlocksPerReward(uint256 blocksPerReward_) public onlyOwner {
         _blocksPerReward = blocksPerReward_;
     }
 
@@ -252,6 +280,20 @@ contract AeronStaking is Ownable {
      */
     function blocksPerReward() public view returns (uint256) {
         return _blocksPerReward;
+    }
+
+    /**
+     * @dev A method to allow owner to set minimum staking amount.
+     */
+    function setMinStake(uint256 minStake) public onlyOwner {
+        _minStake = minStake;
+    }
+
+    /**
+     * @dev A method to display minimum staking amount.
+     */
+    function minStake() public view returns (uint256) {
+        return _minStake;
     }
 
     /**

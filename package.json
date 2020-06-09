@@ -1,7 +1,8 @@
 {
   "name": "aeron-bep2e",
   "version": "1.0.0",
-  "description": "Aeron staking contracts",
+  "description": "Aeron BEP2E Contracts and Staking dApp",
+  "license": "MIT",
   "repository": {
     "type": "git"
   },
@@ -10,20 +11,37 @@
     "test": "test"
   },
   "scripts": {
+    "css": "tailwindcss build src/components/inc/App.scss -o src/components/inc/App.css",
     "dev": "truffle deploy --network development",
     "tbsc": "truffle deploy --network tbsc",
     "test": "truffle test --network test",
-    "coverage": "solidity-coverage"
+    "coverage": "solidity-coverage",
+    "start": "npm run css && react-scripts start",
+    "build": "npm run css && react-scripts build",
+    "test:dapp": "npm run css && react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "keywords": [],
-  "author": "",
-  "license": "",
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
   "dependencies": {
-    "@openzeppelin/contracts": "^3.0.1"
+    "@openzeppelin/contracts": "^3.0.1",
+    "identicon.js": "^2.3.3",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "^3.4.1",
+    "tailwindcss": "^1.4.6",
+    "web3": "^1.2.8"
   },
   "devDependencies": {
     "ganache-cli": "^6.9.1",
     "solidity-coverage": "^0.7.*",
-    "truffle": "^5.1.28"
+    "truffle": "^5.1.29"
   }
 }

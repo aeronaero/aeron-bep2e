@@ -38,14 +38,16 @@ https://explorer.binance.org/smart-testnet/address/0x3b13067E1d4c0664988731Ce096
 - `git clone ...`
 - `cd aeron-bep2e`
 - `npm install`
-- edit networks `vim truffle-config.js`
+- `vim truffle-config.js` to edit networks
 - `truffle compile` to compile contracts
-- `npm run test` to test
+- `npm run test` to test contracts
 - `npm run dev` to run on development network
 - or deploy contracts with [Remix](https://remix.ethereum.org/)
 - `truffle-flattener contracts/AeronToken.sol | pbcopy` to copy Aeron token contract code
 - `truffle-flattener contracts/AeronStaking.sol | pbcopy` to copy Aeron staking contract code
-
+- `npm run start` to start staking dApp on a development server
+- `npm run test:dapp` to test staking dApp
+- `npm run build` to create a production build
 
 ## Binance Smart Chain
 

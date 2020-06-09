@@ -1,3 +1,4 @@
 build/
+src/contracts/
 node_modules/
 package-lock.json
