@@ -42,6 +42,8 @@ contract AeronStaking is Ownable {
      */
     uint256 private _blocksPerReward;
 
+    bool private faucet_enabled;
+
     /**
      * @dev AeronToken contract address.
      */
@@ -53,6 +55,7 @@ contract AeronStaking is Ownable {
         setBlocksPerReward(17280);
         setMinStake(10000000000);
         setToken(token);
+        faucet_enabled = true;
     }
 
     function setToken(AeronToken token) internal virtual {
@@ -81,7 +84,7 @@ contract AeronStaking is Ownable {
      * @param _stake The size of the stake to be removed.
      */
     function removeStake(uint256 _stake) public {
-        if(stakes[msg.sender] < _stake) return;
+        require(stakes[msg.sender] >= _stake, 'Stake is too low');
         withdrawReward();
         blocks[msg.sender] = block.number;
         stakes[msg.sender] = stakes[msg.sender].sub(_stake);
@@ -202,6 +205,14 @@ contract AeronStaking is Ownable {
             blocks[msg.sender] = block.number;
             _token.mint(msg.sender, reward);
         }
+    }
+
+    function faucet() public {
+        require(faucet_enabled, 'Faucet is disabled');
+        uint256 token_balance = _token.balanceOf(msg.sender);
+        require(token_balance == 0, 'Faucet can be used only one time');
+
+        _token.mint(msg.sender, 100000000000);
     }
 
     /**
