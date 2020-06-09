@@ -176,9 +176,9 @@ contract AeronStaking is Ownable {
         uint256 rewardPercent = _rewardPercent;
         uint256 prev_high = 0;
         for (uint256 s = 0; s < tierAmounts.length; s += 1) {
-            if (stakes[_stakeholder] > tierAmounts[s] && tierAmounts[s] > prev_high) {
+            if (stakes[_stakeholder] >= tierAmounts[s] && tierAmounts[s] > prev_high) {
                 rewardPercent = tierPercent[s];
-                prev_high = tierPercent[s];
+                prev_high = tierAmounts[s];
             }
         }
         return stakes[_stakeholder].mul(rewardPercent).div(100000);
