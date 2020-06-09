@@ -38,7 +38,7 @@ contract AeronStaking is Ownable {
 
     /**
      * @dev Staking lock time in block per one reward.
-     * 17280 is 24h
+     * 17280 is 24h assuming 5 blocks per second rate.
      */
     uint256 private _blocksPerReward;
 
@@ -49,9 +49,8 @@ contract AeronStaking is Ownable {
 
     constructor(AeronToken token) public {
         setRewardPercent(1000);
-        setRewardTier(100000000, 1000);
         setRewardTier(100000000000, 1000);
-        setBlocksPerReward(3); //17280
+        setBlocksPerReward(17280);
         setMinStake(10000000000);
         setToken(token);
     }
@@ -250,8 +249,6 @@ contract AeronStaking is Ownable {
      * @dev A method to allow owner to remove reward tier.
      */
     function removeRewardTier(uint256 rewardAmount_) public onlyOwner {
-        require(rewardAmount_ > 0, 'rewardAmount_ is not valid');
-        require(tierAmounts[rewardAmount_] > 0, 'rewardPercent_ is not valid');
         (bool _isRewardAmount, uint256 s) = isRewardTier(rewardAmount_);
         if(_isRewardAmount) {
             tierAmounts[s] = tierAmounts[tierAmounts.length - 1];
