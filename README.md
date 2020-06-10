@@ -51,7 +51,7 @@ https://explorer.binance.org/smart-testnet/address/0xcf4311040e1380B6d828C8F7dC5
 
 ## Binance Smart Chain
 
-You can use Metamask to access Binance Smart Chain:
+You need to install Metamask to access Binance Smart Chain:
 
 https://github.com/binance-chain/docs-site/blob/add-bsc/docs/smart-chain/wallet/metamask.md
 
