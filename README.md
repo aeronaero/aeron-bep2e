@@ -55,6 +55,10 @@ You need to install Metamask to access Binance Smart Chain:
 
 https://github.com/binance-chain/docs-site/blob/add-bsc/docs/smart-chain/wallet/metamask.md
 
+Use faucet to get free testnet tokens:
+
+https://testnet.binance.org/faucet-smart
+
 
 ## BEP2 > BEP2E Migration
 
