@@ -24,6 +24,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "homepage": "https://aeron.aero/staking",
   "browserslist": [
     ">0.2%",
     "not dead",
@@ -31,13 +32,13 @@
     "not op_mini all"
   ],
   "dependencies": {
-    "@openzeppelin/contracts": "^3.0.1",
+    "@openzeppelin/contracts": "^3.0.2",
     "identicon.js": "^2.3.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.1",
     "tailwindcss": "^1.4.6",
-    "web3": "^1.2.8"
+    "web3": "^1.2.9"
   },
   "devDependencies": {
     "ganache-cli": "^6.9.1",
