@@ -28,9 +28,12 @@ Public methods:
 `blocksPerReward` - number of blocks required to pass for the reward to accrue  
 `rewardPercent` - reward in percent of the staked amount multiplied by 1000  
 
-Sample contract on Binance Smart Chain Testnet is deployed here:  
-  
-https://explorer.binance.org/smart-testnet/address/0xcf4311040e1380B6d828C8F7dC51A4f32Db0e938/read_contract
+Sample contracts are deployed on Binance Smart Chain Testnet:
+
+  - [Aeron Token Contract](https://explorer.binance.org/smart-testnet/address/0x81Dbb3b9397D7C912c7211A96134345Cb2123223/read_contract)
+  - [Aeron Staking Contract](https://explorer.binance.org/smart-testnet/address/0xcf4311040e1380B6d828C8F7dC51A4f32Db0e938/read_contract)
+
+
 
 
 ## Installation
