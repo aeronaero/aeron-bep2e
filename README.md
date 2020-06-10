@@ -45,8 +45,8 @@ https://explorer.binance.org/smart-testnet/address/0xcf4311040e1380B6d828C8F7dC5
 - or deploy contracts with [Remix](https://remix.ethereum.org/)
 - `truffle-flattener contracts/AeronToken.sol | pbcopy` to copy Aeron token contract code
 - `truffle-flattener contracts/AeronStaking.sol | pbcopy` to copy Aeron staking contract code
-- `npm run start` to start staking dApp on a development server
-- `npm run test:dapp` to test staking dApp
+- `npm run start` to start Aeron Staking DApp on a development server
+- `npm run test:dapp` to test Aeron Staking DApp
 - `npm run build` to create a production build
 
 ## Binance Smart Chain
