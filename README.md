@@ -96,4 +96,4 @@ BC. After this final confirmation, the BEP2E contract address and decimals will 
 written onto the BEP2 token as a new attribute on BC, and the tokens can be transferred
 across the two blockchains bidirectionally. If the ApproveBind fails, the failure event will
 also be propagated back to BC to release the locked tokens, and the above steps can be
-re-tried later.
+retried later.
