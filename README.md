@@ -5,6 +5,8 @@ This “New ARN” contract for Binance Smart Chain implements a simple staking 
 It will be further developed to enable graded rewards, based on the amounts staked or other variables.
 
 In present implementation, a stake is attached to a block number when it has been created, and reward is calculated as `staked amount` * `rewardPercent` * number of blocks `blocksPerReward` lapsed.
+
+Sample dashboard can be seen deployed at https://aeron.aero/staking/
     
     
 The contract owner can call `setRewardPercent`, `setBlocksPerReward`:  
